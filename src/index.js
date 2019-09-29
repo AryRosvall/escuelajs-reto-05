@@ -1,14 +1,13 @@
 const $app = document.getElementById("app");
 const $observe = document.getElementById("observe");
 const API = "https://us-central1-escuelajs-api.cloudfunctions.net/characters";
-//const API = 'https://rickandmortyapi.com/api/character/';
-let next_fetch;
-let pages = 1;
 
-const paintData = (results, next) => {
+let next_fetch;
+
+const paintData = (data, next) => {
   let output;
-  if (results) {
-    const characters = results;
+  if (data) {
+    const characters = data;
     output = characters
       .map(character => {
         return `
@@ -21,7 +20,7 @@ const paintData = (results, next) => {
       .join("");
   }
   if (!next) {
-    output = `<div>upsi ya no hay más personajes</>`;
+    output += `<div class="NoMore"><h2>¡Fin del camino!</h2><div/>`;
     intersectionObserver.unobserve($observe);
   }
   let newItem = document.createElement("section");
@@ -49,11 +48,7 @@ const getData = api => {
 const loadData = async () => {
   let url;
   next_fetch = localStorage.getItem("next_fetch");
-  console.log("llave storage", next_fetch);
-
   url = next_fetch ? next_fetch : API;
-
-  console.log("url se ejecuta ", url);
   await getData(url);
 };
 

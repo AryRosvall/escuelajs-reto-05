@@ -45,6 +45,19 @@ body {
   justify-content: space-between;
 }
 
+.NoMore {
+  display: grid;
+  grid-column: span 2;
+  box-shadow: 8px 14px 138px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+}
+.NoMore h2 {
+  font-size: 18px;
+  font-weight: 300;
+  text-align:center;
+  border-radius: 5px;
+ 
+}
+
 @keyframes fade {
   from {
     opacity: 0;
